@@ -1,0 +1,51 @@
+Descargar: Python 3.10.10 & Visual Studio Code
+
+En VSC abrir terminal con Ctrl + Ñ y colocar:
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+Seleccionar venv como interprete (presionando Ctrl + Shift + P y buscando Select Interpreter)
+
+Luego instalar librerias:
+pip install torch==2.2.2 torchvision==0.17.2 torch-directml diffusers huggingface_hub
+
+Revisa "descargar_modelo.py" y coloca tu ID de preferencia.
+
+Ejemplos de IDs de modelos:
+
+Anime: songkey/meinamix_v12Final
+
+PixelArt: Anomaly-Games-Inc/aziibpixelmix-json
+
+Realismo: Yntec/epiCPhotoGasm
+
+3D: Lykon/dreamshaper-8
+
+Comic: ogkalu/Comic-Diffusion
+
+Una vez hayas elegido tu ID de tu modelo de preferencia ejecuta en la terminal:
+
+python descargar_modelo.py
+
+Esto tardara bastante pero solo se tendra que hacer una vez 
+(amenos que quieras descargar otro modelo, solo cambia la ID y nombre de la carpeta dentro de "descargar_modelo.py")
+Una vez se haya descargado, no olvides revisar que en generador.py la carpeta de tu modelo sea la correcta 
+(no es necesario si no lo cambiaste)
+Una vez hayas configurado generador.py con tus preferencias ejecutalo en la terminal:
+
+python generador.py
+
+Y listo ya tienes tu generador de imagenes con SD 1.5 local en AMD usable incluso con solo 2 GB de vram
+
+
+Recomendaciones: 
+
+Coloca en tu prompt etiquetas como Close-Up o Cowboy Shot (ya que con Full Body es muy probable que genere mal rostros)
+
+Puedes usar hasta 3 LoRAs (estos solo necesitan .safetensor asi que puedes descargarlos desde Civitai).
+Pero recomiendo usar solo 2, ya que si la suma de los pesos (weights) da mas de 1.0, la imagen se rompera o
+alterara mucho el estilo del modelo Checkpoint base y para algunos LoRAs un peso de 0.3 se queda demasiado corto
+
+Desarrollado y testeado en mi PC gama de entrada: 
+- Procesador: AMD Ryzen 5 3400G
+- Gráficos: AMD Radeon Vega 11 (Con 2 GB de VRAM asignados desde la BIOS)
+- RAM instalada: 16 GB (13.5 GB usables)
